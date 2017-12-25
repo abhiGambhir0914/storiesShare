@@ -6,7 +6,7 @@ $('input[type="submit"]').click(function(){
   setTimeout(function(){
     $(".authent").show().animate({right:-320},{easing : 'easeOutQuint' ,duration: 600, queue: false });
     $(".authent").animate({opacity: 1},{duration: 200, queue: false }).addClass('visible');
-  },0);
+  },320);
   setTimeout(function(){
     $(".authent").show().animate({right:90},{easing : 'easeOutQuint' ,duration: 600, queue: false });
     $(".authent").animate({opacity: 0},{duration: 200, queue: false }).addClass('visible');
