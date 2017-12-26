@@ -1,8 +1,12 @@
 const express = require('express');
+const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+
+var path = require("path");
+
 
 // var path = require("path");
 
@@ -18,6 +22,7 @@ require('./config/passport')(passport);
 //Load Routes
 const index = require('./routes/index');
 const auth = require('./routes/auth');
+const stories = require('./routes/stories');
 
 //Load Keys
 const keys = require('./config/keys');
@@ -33,6 +38,11 @@ mongoose.connect(keys.mongoURI,{
 .catch(err => console.log(err))
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, '/public')));
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 // app.use(express.static(path.join(__dirname, '/public')));
 
@@ -61,7 +71,7 @@ app.use((req,res,next) => {
 //Use routes
 app.use('/',index);
 app.use('/auth',auth);
-
+app.use('/stories',stories);
 
 const port = process.env.PORT || 9000; //process.env.PORT for production port
 
