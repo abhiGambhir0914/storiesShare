@@ -8,7 +8,7 @@
   height: 800px;
   text-align: center;
   margin: 0;
-  background-color: #FFF;
+  /*background-color: #FFF;*/
   /*background-image: url('sws.png');*/
   /*position: fixed;*/
   background-repeat:no-repeat; background-position:center 690px;
@@ -29,8 +29,8 @@
 
 body {
   position: relative;
-  /*background: url('http://thecodeplayer.com/u/m/b1.png') no-repeat center center fixed;*/
-  background-size: cover;
+  background: url('/img/1.png');
+  /*background-size: cover;*/
   min-width: 500px;
   min-height: 200px;
   color: #fff;
