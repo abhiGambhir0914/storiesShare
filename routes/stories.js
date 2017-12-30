@@ -6,7 +6,7 @@ router.get('/',(req,res)=>{
   res.render('stories/index',{ layout:'layout2' });
 });
 
-//Add Stories Form
+//Add Story Form
 router.get('/add',(req,res)=>{
   res.render('stories/add',{ layout:'layout2' });
 });

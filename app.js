@@ -7,7 +7,6 @@ const cookieParser = require('cookie-parser');
 
 var path = require("path");
 
-
 // var path = require("path");
 
 //jade
