@@ -52,9 +52,11 @@ app.set('view engine', 'handlebars');
 app.use(cookieParser());
 app.use(session({
   secret: 'secrethaibc',
-  resave: false,
-  saveUninitialized: false,
+  resave: true,
+  saveUninitialized: true,
   // cookie: {secure: true}  //if using https only
+  cookie: {maxAge: 5*60*60*1000 },               //5 hours of inactivity
+  rolling: true
 }));
 
 //Passport Middleware
