@@ -58,15 +58,6 @@ p, ul > li, ol > li {
   margin: 0 0 0.75em;
 }
 
-article a, article a:link {
-  color: #000;
-}
-article a:visited {
-  color: #444;
-}
-article a:hover, article a:active {
-  color: #a0a0a0;
-}
 
 /*.show-story h1, h2, h3, h4, h5, h6 {
   font-family: Lato, Helvetica Neue, Arial, sans-serif;

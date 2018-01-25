@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
+const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
@@ -32,7 +33,8 @@ const keys = require('./config/keys');
 const {
   truncate,
   stripTags,
-  formatDate
+  formatDate,
+  select
 } = require('./helpers/hbs');
 
 //Load Global Promise
@@ -57,7 +59,8 @@ app.engine('handlebars', exphbs({
   helpers: {
     truncate: truncate,
     stripTags: stripTags,
-    formatDate: formatDate
+    formatDate: formatDate,
+    select: select
   },
   defaultLayout: 'main'
 }));
@@ -82,6 +85,9 @@ app.use(session({
 //Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+//method-override Middleware
+app.use(methodOverride('_method'));
 
 //Set Global vars
 app.use((req,res,next) => {

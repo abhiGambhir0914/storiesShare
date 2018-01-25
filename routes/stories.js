@@ -35,10 +35,27 @@ router.get('/show/:id',ensureAuthenticated,(req,res)=>{
   });
 });
 
+
 //Add Story Form
 router.get('/add',ensureAuthenticated,(req,res)=>{
   res.render('stories/add',{ layout:'layout2' });
 });
+
+
+
+//Edit Story Form
+router.get('/edit/:id',ensureAuthenticated,(req,res)=>{
+  Story.findOne({
+    _id: req.params.id
+  })
+  .then(story => {
+      res.render('stories/edit',{
+        story: story,
+        layout:'layout3'
+      });
+  });
+});
+
 
 //stories POST
 router.post('/',(req,res)=>{
@@ -65,8 +82,37 @@ router.post('/',(req,res)=>{
     .then(story=>{
       res.redirect(`/stories/show/${story.id}`);
     });
-
 });
 
+
+
+// Edit Form Process
+router.put('/:id', (req,res)=>{
+  // iid = req.params.id
+
+  Story.findOne({
+    _id: req.params.id
+  })
+  .then(story => {
+
+    let allowComments;
+
+    if(req.body.allowComments){
+      allowComments = true;
+    } else{
+      allowComments = false;
+    }
+    //New Values
+    story.title = req.body.title;
+    story.body = req.body.body;
+    story.status = req.body.status;
+    story.allowComments = allowComments;
+
+    story.save()
+      .then(story => {
+        res.redirect(`show/${story.id}`);
+      });
+  });
+});
 
 module.exports = router;
