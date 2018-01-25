@@ -1,1 +1,24 @@
-<h1>Show Story</h1>
+<!-- <h1>Show Story</h1> -->
+
+<div class="container" class="show-story">
+  <article class="main">
+    <aside class="post-meta">
+      <div>
+        <a href="/stories/user/{{story.user.id}}">
+          <img src={{story.user.image}} class="author-avatar"/>
+        </a>
+      </div>
+      <div class="post-info">
+        <p class="author-name">
+          <a href="/stories/user/{{story.user.id}}">{{story.user.firstName}} {{story.user.lastName}}</a>
+        </p>
+        <p class="text-muted" style="font-size: 0.9em">{{formatDate story.date 'MMMM Do YYYY'}}</p>
+      </div>
+    </aside>
+    <h1>{{story.title}}</h1>
+    <br />
+    <p class="posted-content">
+      {{{story.body}}}
+    </p>
+  </article>
+</div>

@@ -9,15 +9,18 @@
   "author": "Abhi Gambhir",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "jade": "^1.11.0",
+    "moment": "^2.20.1",
     "mongoose": "^4.13.7",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth20": "^1.0.0",
+    "social-share": "^0.1.0",
     "trumbowyg": "^2.9.2"
   }
 }

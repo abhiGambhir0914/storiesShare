@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
 var path = require("path");
 
@@ -12,8 +13,9 @@ var path = require("path");
 //jade
 // const jade = require('jade');
 
-//Load User Model
+//Load Models
 require('./models/User');
+require('./models/Story');
 
 //Passport config
 require('./config/passport')(passport);
@@ -26,21 +28,39 @@ const stories = require('./routes/stories');
 //Load Keys
 const keys = require('./config/keys');
 
+//handlebars helpers
+const {
+  truncate,
+  stripTags,
+  formatDate
+} = require('./helpers/hbs');
+
 //Load Global Promise
 mongoose.Promise = global.Promise;
 
 //Mongoose Connect
 mongoose.connect(keys.mongoURI,{
-  useMongoClient: true
+  useMongoClient: true,
 })
 .then(()=>console.log('MongoDB Connected............'))
 .catch(err => console.log(err))
 
 const app = express();
 
+// body-parser middleware
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 app.use(express.static(path.join(__dirname, '/public')));
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', exphbs({
+  helpers: {
+    truncate: truncate,
+    stripTags: stripTags,
+    formatDate: formatDate
+  },
+  defaultLayout: 'main'
+}));
 app.set('view engine', 'handlebars');
 
 // app.use(express.static(path.join(__dirname, '/public')));

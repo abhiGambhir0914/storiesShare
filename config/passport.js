@@ -57,7 +57,7 @@ module.exports = function(passport){
   }, (accessToken, refreshToken, profile, done)=>{
     // console.log(accessToken);
     // console.log(profile);
-   const image = `https://graph.facebook.com/${profile.id}/picture?width=1000`;
+   const image = `https://graph.facebook.com/${profile.id}/picture?`;
   //  console.log(image);
   const name = profile.displayName.split(' ');
 

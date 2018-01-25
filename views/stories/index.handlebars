@@ -1,1 +1,31 @@
-<h1>Stories</h1>
+<!-- <h1>Stories</h1> -->
+
+<!-- ********* <3 ********* NINE ********* <3 ********* -->
+<div class="row">
+<ul class="nine">
+{{#each stories}}
+
+  <li class="transition">
+
+    <div class="wrapper">
+      <a href="/stories/edit/{{id}}" class="round-btn-edit"><i class="fa fa-pencil"></i></a>
+
+      <span class="transition">
+        <img class="transition" src={{user.image}}></a>
+      <p class="transition" style="padding-left:8px;padding-top:440px;color: white">{{user.firstName}}</p>
+      </span>
+
+      <h3 class="transition">{{title}}<em>{{stripTags (truncate body 470)}}</em></h3>
+      <div class="trigger"></div>
+      <ul class="social transition">
+        <a href="/stories/show/{{id}}" class="round-btn"><i class="fa fa-long-arrow-right"></i></a>
+      </ul>
+    </div>
+  </li>
+
+{{else}}
+<p>No stories yet. Why don't you add one.</p>
+
+{{/each}}
+</ul>
+</div>

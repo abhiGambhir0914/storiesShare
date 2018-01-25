@@ -1,1 +1,45 @@
 <h2 style="color:black">Dashboard</h2>
+
+{{#if stories}}
+
+<table class="table table-striped table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each stories}}
+
+        <tr>
+          <td><a href="/stories/show/{{id}}">{{title}}</a></td>
+          <td>{{formatDate date 'MMM Do YYYY'}}</td>
+          <td><span class="firstletter-cap">{{status}}</span></td>
+
+          <td>
+            <a class="btn btn-dark" style="opacity:0.9" href="/stories/edit/{{id}}">
+              <i style="padding-right:5px;" class="fa fa-pencil"></i>EDIT
+            </a>
+
+            <form action="/stories/{{id}}" method="post" id="delete-form">
+              <button type="submit" class="btn btn-danger"><i style="padding-right:5px;" class="fa fa-remove"></i>DELETE</button>
+            </form>
+
+          </td>
+        </tr>
+
+    {{/each}}
+
+  </tbody>
+</table>
+
+
+{{else}}
+
+  <p>You have not created any stories yet. Why don't you write one by clicking the Add icon.</p>
+
+{{/if}}
