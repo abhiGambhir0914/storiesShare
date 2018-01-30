@@ -1,5 +1,7 @@
 <!-- <h1>Show Story</h1> -->
 
+    <div id="share"></div>
+
 <div class="container" class="show-story">
   <article class="main">
     <aside class="post-meta">
@@ -20,5 +22,60 @@
     <p class="posted-content">
       {{{story.body}}}
     </p>
+    <br />
+
+
+    {{#if story.allowComments}}
+
+      <h2>Responses</h2>
+      <br />
+
+      {{#if user}}
+      <div class="comments">
+
+        <div class="comment-wrap">
+          <div class="photo">
+            <img class="avatar" src= {{user.image}} alt=" ">
+            <!-- <div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg')"></div> -->
+          </div>
+          <div class="comment-block">
+            <form method="post" action="/stories/comment/{{story.id}}">
+              <textarea name="commentBody" placeholder="Add comment..." rows="5" required="true"></textarea>
+              <!-- <input type="text" name="" value="Submit"> -->
+              <ul class="comment-actions">
+                <input type="submit" id="sub" value="Submit" class="btn" />
+              </ul>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <br />
+      {{else}}
+      <p>
+        You have to login to Comment... <a href="/">LOGIN</a>
+      </p>
+
+      {{/if}}
+
+    {{#each story.comments}}
+      <div class="comment-wrap" id="publish-cmts">
+        <div class="photo">
+          <img class="avatar" src= {{commentUser.image}} alt=" ">
+          <!-- <div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/felipenogs/128.jpg')"></div> -->
+        </div>
+        <div class="comment-block" id="cmts">
+          <p id="cmt-user-name">{{commentUser.firstName}} {{commentUser.lastName}}</p>
+          <p class="comment-text">{{commentBody}}</p>
+          <div class="bottom-comment">
+            <div class="comment-date">{{formatDate commentDate.date 'MMM Do'}}</div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+
+  {{/if}}
+
+
   </article>
 </div>

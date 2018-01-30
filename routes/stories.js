@@ -21,11 +21,12 @@ router.get('/',ensureAuthenticated,(req,res)=>{
 });
 
 //Show Single Story
-router.get('/show/:id',ensureAuthenticated,(req,res)=>{
+router.get('/show/:id',(req,res)=>{
   Story.findOne({
     _id: req.params.id
   })
   .populate('user')
+  .populate('comments.commentUser')
   .then(story => {
       res.render('stories/show',{
         story: story,
@@ -113,6 +114,38 @@ router.put('/:id', (req,res)=>{
         res.redirect(`show/${story.id}`);
       });
   });
+});
+
+
+
+//DELETE form Process
+router.delete('/:id', (req, res)=>{
+  Story.remove({ _id: req.params.id })
+    .then(()=>{
+      res.redirect('/dashboard');
+    });
+});
+
+
+//ADD COMMENT
+router.post('/comment/:id',(req,res)=>{
+
+  Story.findOne({_id: req.params.id})
+
+    .then((story)=>{
+      const newComment = {
+        commentBody: req.body.commentBody,
+        commentUser: req.user.id
+      }
+
+      //Add to comments array
+      story.comments.unshift(newComment);
+
+      story.save()
+        .then(stroy => {
+          res.redirect(`/stories/show/${story.id}#cmts`);
+        });
+    });
 });
 
 module.exports = router;

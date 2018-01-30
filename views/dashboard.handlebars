@@ -25,8 +25,10 @@
               <i style="padding-right:5px;" class="fa fa-pencil"></i>EDIT
             </a>
 
-            <form action="/stories/{{id}}" method="post" id="delete-form">
-              <button type="submit" class="btn btn-danger"><i style="padding-right:5px;" class="fa fa-remove"></i>DELETE</button>
+            <form action="/stories/{{id}}?_method=DELETE" method="post" id="delete-form">
+              <input type="hidden" name="_method" value="DELETE" />
+
+              <button id="delete" type="submit" class="btn btn-danger"><i style="padding-right:5px;" class="fa fa-remove"></i>DELETE</button>
             </form>
 
           </td>

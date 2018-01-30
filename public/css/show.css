@@ -583,6 +583,116 @@ article p {
 }
 
 
+/*COMMENTS*/
+
+.comments input, textarea {
+  outline: none;
+  border: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  font-family: "PT Sans", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-size: .9rem;
+  color: black;
+}
+.comments input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #ced2db;
+}
+.comments input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #ced2db;
+}
+.comments input:-moz-placeholder, textarea:-moz-placeholder {
+  color: #ced2db;
+}
+.comments input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #ced2db;
+}
+
+.comments p {
+  line-height: 1.3125rem;
+}
+
+.comments {
+  /*margin: 2.5rem auto 0;*/
+  max-width: 800px;
+  padding: 0 1.25rem;
+}
+
+#publish-cmts {
+  width: inherit;
+}
+
+.comment-wrap {
+  margin-bottom: 1.25rem;
+  display: table;
+  width: 100%;
+  min-height: 5.312rem;
+}
+.comment-actions {
+  float: right;
+  /*margin-top:50px;*/
+}
+.comment-actions #sub{
+  display: inline;
+  font-weight: bold;
+  /*margin-left: -80px;*/
+  cursor: pointer;
+  color: #007ef6;
+  font-size: 0.875rem;
+  /*border: 2px solid grey;*/
+  /*box-shadow:5px;*/
+}
+
+.comment-text {
+  /*margin-bottom: 1.25rem;*/
+  margin-top: -22px;
+  font-size: .7rem;
+}
+
+.bottom-comment {
+  color: #acb4c2;
+  font-size: 0.875rem;
+}
+
+#cmt-user-name {
+  font-size: .9rem;
+  color: #007ef6;
+}
+
+.comment-date {
+  float: right;
+  font-size: .2rem;
+}
+
+.photo {
+  padding-top: 0.225rem;
+  display: table-cell;
+  width: 3.9rem;
+}
+.photo .avatar {
+  height: 3.0rem;
+  width: 3.0rem;
+  border-radius: 50%;
+  background-size: contain;
+}
+
+.comment-block {
+  padding: 1rem;
+  background-color: #fff;
+  display: table-cell;
+  vertical-align: top;
+  border-radius: 0.1875rem;
+  -webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+}
+.comment-block textarea {
+  width: 100%;
+  resize: none;
+}
+
+/*END COMMENTS*/
+
 
 
 /*article a:hover {
