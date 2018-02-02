@@ -1,0 +1,16 @@
+<div class="menu">
+  <div class="title" onclick="f()">
+    <div class="at-about-fab__thumbnail">
+      <img alt="Andy Tran" src="{{user.image}}" />
+    </div>
+    {{user.firstName}} {{user.lastName}}
+    <span class="fa fa-angle-down"></span>
+  </div>
+  <div class="dropdown">
+    <a style="text-decoration:none; color:inherit" href="/dashboard"><p>Dashboard &nbsp;&nbsp;<span class="fa fa-inbox"></span></p></a>
+    <a style="text-decoration:none; color:inherit" href="/stories/add"><p>Add Story &nbsp;&nbsp;<span class="fa fa-plus-circle"></span></p></a>
+    <a style="text-decoration:none; color:inherit" href="/stories/my"><p>My Private Stories &nbsp;&nbsp;<span class="fa fa-archive"></span></p></a>
+    <!-- <p>Edit My Stories <span class="fa fa-gear"></span></p> -->
+    <a style="text-decoration:none; color:inherit" href="#"><p>Sign Out &nbsp;&nbsp;<span class="fa fa-sign-out"></span></p></a>
+  </div>
+</div>

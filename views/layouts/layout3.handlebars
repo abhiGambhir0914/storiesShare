@@ -18,14 +18,16 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
 
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
+  <script type="text/javascript" src="/js/jssocials.min.js"></script>
 
-  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-flat.css" />
+  <link type="text/css" rel="stylesheet" href="/css/jssocials.css" />
+<link type="text/css" rel="stylesheet" href="/css/jssocials-theme-classic.css" />
 
 </head>
 
 <body>
+
+  {{> _useroptions}}
 
   {{> _navbar}}
 
@@ -49,7 +51,7 @@
 
     <script>
             $("#share").jsSocials({
-                shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+                shares: ["facebook","twitter","linkedin","whatsapp"]
             });
         </script>
 

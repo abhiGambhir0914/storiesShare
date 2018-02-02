@@ -17,6 +17,7 @@ router.get('/',ensureGuest,(req,res)=>{
 
 router.get('/dashboard',ensureAuthenticated,(req,res)=>{
   Story.find({user: req.user.id})
+    .sort({date:'desc'})
     .then(stories => {
       res.render('dashboard',{ layout: 'layout2', stories: stories });
     });

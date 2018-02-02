@@ -1,6 +1,5 @@
 <!-- <h1>Show Story</h1> -->
 
-    <div id="share"></div>
 
 <div class="container" class="show-story">
   <article class="main">
@@ -17,8 +16,10 @@
         <p class="text-muted" style="font-size: 0.9em">{{formatDate story.date 'MMMM Do YYYY'}}</p>
       </div>
     </aside>
-    <h1>{{story.title}}</h1>
+    <h1>{{story.title}} &nbsp;&nbsp;&nbsp; <small style="position: relative;">{{{editIcon story.user.id user.id story.id}}}</small> </h1>
     <br />
+    <div id="share"></div>
+
     <p class="posted-content">
       {{{story.body}}}
     </p>
@@ -61,14 +62,14 @@
     {{#each story.comments}}
       <div class="comment-wrap" id="publish-cmts">
         <div class="photo">
-          <img class="avatar" src= {{commentUser.image}} alt=" ">
+          <a href="/stories/user/{{commentUser.id}}"><img class="avatar" src= {{commentUser.image}} alt=" "></a>
           <!-- <div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/felipenogs/128.jpg')"></div> -->
         </div>
         <div class="comment-block" id="cmts">
-          <p id="cmt-user-name">{{commentUser.firstName}} {{commentUser.lastName}}</p>
+          <p id="cmt-user-name"><a href="/stories/user/{{commentUser.id}}">{{commentUser.firstName}} {{commentUser.lastName}}</a></p>
           <p class="comment-text">{{commentBody}}</p>
           <div class="bottom-comment">
-            <div class="comment-date">{{formatDate commentDate.date 'MMM Do'}}</div>
+            <div class="comment-date">{{formatDate commentDate 'MMM Do'}}</div>
           </div>
         </div>
       </div>

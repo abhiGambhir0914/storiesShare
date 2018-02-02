@@ -11,6 +11,7 @@ const {ensureAuthenticated} = require('../helpers/auth');
 router.get('/',ensureAuthenticated,(req,res)=>{
   Story.find({status: 'public'})
     .populate('user')
+    .sort({date:'desc'})
     .then(stories => {
       res.render('stories/index',{
         stories: stories,
@@ -50,10 +51,14 @@ router.get('/edit/:id',ensureAuthenticated,(req,res)=>{
     _id: req.params.id
   })
   .then(story => {
+    if(story.user != req.user.id){
+      res.rediect('/stories');
+    }else{
       res.render('stories/edit',{
         story: story,
         layout:'layout3'
       });
+    }
   });
 });
 
@@ -145,6 +150,33 @@ router.post('/comment/:id',(req,res)=>{
         .then(stroy => {
           res.redirect(`/stories/show/${story.id}#cmts`);
         });
+    });
+});
+
+
+//List stories from a user
+router.get('/user/:userId',ensureAuthenticated, (req,res)=>{
+  Story.find({user: req.params.userId, status: 'public'})
+    .populate('user')
+    .sort({date:'desc'})
+    .then(stories =>{
+      res.render('stories/index',{
+        stories: stories,
+        layout: 'layout2'
+      })
+    })
+});
+
+//Logged In User Story
+router.get('/my',ensureAuthenticated, (req,res)=>{
+  Story.find({user: req.user.id, status: 'private' })
+    .populate('user')
+    .sort({date:'desc'})
+    .then(stories =>{
+      res.render('stories/private',{
+        stories: stories,
+        layout: 'layout2'
+      });
     });
 });
 
